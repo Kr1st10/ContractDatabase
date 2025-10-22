@@ -170,17 +170,3 @@ HAVING SUM(contracts.total_sum) > 1000000
 ORDER BY total_contract_sum DESC;
 
 
-
---
-CREATE OR REPLACE VIEW view_contracts_simple AS
-SELECT
-    contracts.contract_id,
-    contracts.contract_code,
-    contracts.contract_date,
-    customer_org.name AS customer_name,
-    contractor_org.name AS contractor_name,
-    contracts.total_sum
-FROM contracts
-JOIN organizations AS customer_org ON contracts.customer_org_id = customer_org.org_id
-JOIN organizations AS contractor_org ON contracts.contractor_org_id = contractor_org.org_id
-ORDER BY contracts.contract_date DESC;--
